@@ -1,10 +1,10 @@
-import axios from "axios";
+import service from "./axios-config";
 
 class serviceManger {
   //登录
   login(username, password) {
     return new Promise((resolve, reject) => {
-      return axios
+      return service
         .post("/user/login", {
           username,
           password

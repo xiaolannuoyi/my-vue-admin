@@ -89,12 +89,12 @@ export default {
           this.$serviceManger
             .login(this.loginForm.username, this.loginForm.password)
             .then(data => {
+              console.log(data);
               this.loading = false;
-              if (data.data.result) {
+              if (data) {
                 this.$router.push("/");
-              } else {
-                this.$message.error(data.data.message); //登录失败提示错误
               }
+              // 通过axios拦截器对响应码不是200 的进行拦截,显示提示信息
             });
         } else {
           this.$message.error("error submit!!"); //登录失败提示错误
