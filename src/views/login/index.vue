@@ -86,15 +86,16 @@ export default {
       this.$refs.loginForm.validate(valid => {
         if (valid) {
           this.loading = true;
-          this.$serviceManger
-            .login(this.loginForm.username, this.loginForm.password)
+          this.$store
+            .dispatch("Login", this.loginForm)
             .then(data => {
-              console.log(data);
               this.loading = false;
               if (data) {
                 this.$router.push("/");
               }
-              // 通过axios拦截器对响应码不是200 的进行拦截,显示提示信息
+            })
+            .catch(() => {
+              this.loading = false;
             });
         } else {
           this.$message.error("error submit!!"); //登录失败提示错误

@@ -1,34 +1,26 @@
 const tokens = {
   admin: {
-    pas: "admin"
+    pas: "admin",
+    token: "admin-token"
   },
   editor: {
-    pas: "editor"
+    pas: "editor",
+    token: "editor-token"
   }
 };
 export default {
   login: res => {
     const { username, password } = JSON.parse(res.body); //解构 username
-    console.log(tokens[username].pas);
-    console.log(password);
 
-    if (username in tokens) {
-      if (tokens[username].pas == password) {
-        return {
-          code: 200,
-          result: true,
-          message: ""
-        };
-      } else {
-        return {
-          code: 20000,
-          result: false,
-          message: "密码错误"
-        };
-      }
+    if (username in tokens && tokens[username].pas == password) {
+      return {
+        code: 200,
+        result: tokens[username].token,
+        message: ""
+      };
     }
     return {
-      code: 60204,
+      code: 90001,
       message: "Account and password are incorrect."
     };
   }
