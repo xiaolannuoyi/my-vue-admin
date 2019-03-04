@@ -17,5 +17,21 @@ class serviceManger {
         });
     });
   }
+  //获取用户信息
+  getInfo(token) {
+    return new Promise((resolve, reject) => {
+      return service({
+        url: "/user/getInfo",
+        method: "get",
+        params: { token }
+      })
+        .then(response => {
+          resolve(response);
+        })
+        .catch(error => {
+          reject(error);
+        });
+    });
+  }
 }
 export default new serviceManger();
