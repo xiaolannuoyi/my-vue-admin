@@ -1,24 +1,10 @@
 import serviceManger from "@/service/index";
 
-function setCookie(name, value, m) {
-  var d = new Date();
-  d.setTime(d.getTime() + 1000 * m); //24 * 60 * 60 * 1000 * days
-  window.document.cookie =
-    name + "=" + value + ";path=/;expires=" + d.toGMTString();
-}
-
-function getCookie(name) {
-  var v = window.document.cookie.match("(^|;) ?" + name + "=([^;]*)(;|$)");
-  return v ? v[2] : null;
-}
-
-function deleteCookie(name) {
-  this.set(name, "", -1);
-}
+import cookie from "@/utils/cookie.js";
 
 const user = {
   state: {
-    token: "",
+    token: cookie.getCookie("my-vue-admin"),
     name: "",
     avatar: "",
     roles: []
@@ -48,7 +34,7 @@ const user = {
       return new Promise((resolve, reject) => {
         serviceManger.login(username, userInfo.password).then(response => {
           if (response) {
-            setCookie("my-vue-admin", response.result, 30);
+            cookie.setCookie("my-vue-admin", response.result, 60); //60为 1分钟
             commit("SET_TOKEN", response.result);
             resolve(response);
           } else {
