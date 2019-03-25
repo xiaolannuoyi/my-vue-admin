@@ -1,10 +1,11 @@
 import serviceManger from "@/service/index";
 
-import cookie from "@/utils/cookie.js";
-
+// import cookie from "@/utils/cookie.js";
+import cookie from "js-cookie";
 const user = {
   state: {
-    token: cookie.getCookie("my-vue-admin"),
+    // token: cookie.getCookie("my-vue-admin"),
+    token: cookie.get("my-vue-admin"),
     name: "",
     avatar: "",
     roles: []
@@ -34,7 +35,8 @@ const user = {
       return new Promise((resolve, reject) => {
         serviceManger.login(username, userInfo.password).then(response => {
           if (response) {
-            cookie.setCookie("my-vue-admin", response.result, 60); //60为 1分钟
+            // cookie.setCookie("my-vue-admin", response.result, 60); //60为 1分钟
+            cookie.set("my-vue-admin", response.result); //
             commit("SET_TOKEN", response.result);
             resolve(response);
           } else {
