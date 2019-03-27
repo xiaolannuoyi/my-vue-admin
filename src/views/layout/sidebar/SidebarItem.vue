@@ -15,14 +15,17 @@
       <el-submenu
         v-if="item.children && !item.hidden"
         :key="item.path"
-        :index="item.path"
+        :index="parent ? parent + '/' + item.path : item.path"
       >
         <template slot="title">
           <i :class="item.meta.icon"></i>
           <span> {{ item.meta.title }}</span>
         </template>
         <!-- 递归 -->
-        <sidebar-item :menu="item.children" :parent="item.path" />
+        <sidebar-item
+          :menu="item.children"
+          :parent="parent ? parent + '/' + item.path : item.path"
+        />
       </el-submenu>
     </template>
   </div>
