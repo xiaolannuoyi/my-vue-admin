@@ -7,6 +7,23 @@
       ]"
       @click="toggleSideBar"
     ></i>
+
+    <!-- 右侧下拉菜单 -->
+    <el-dropdown class="avatar-container">
+      <span>
+        <img :src="getavatar + '?imageView2/1/w/40/h/40'" class="user-avatar" />
+      </span>
+      <el-dropdown-menu slot="dropdown">
+        <router-link to="/">
+          <el-dropdown-item>
+            Home
+          </el-dropdown-item>
+        </router-link>
+        <el-dropdown-item divided @click.native="logout"
+          >退出登录</el-dropdown-item
+        >
+      </el-dropdown-menu>
+    </el-dropdown>
   </div>
 </template>
 
@@ -16,15 +33,20 @@ export default {
   methods: {
     toggleSideBar() {
       this.$store.dispatch("ToggleSideBar");
+    },
+    logout() {
+      this.$store.dispatch("LogOut").then(() => {
+        location.reload(); // 为了重新实例化vue-router对象 避免bug
+      });
     }
   },
   computed: {
-    ...mapGetters(["getsidebar"])
+    ...mapGetters(["getsidebar", "getavatar"])
   }
 };
 </script>
 
-<style>
+<style scoped>
 .header {
   width: 100%;
   background-color: #ccc;
@@ -33,5 +55,16 @@ export default {
 .icon {
   font-size: 40px;
   margin-top: 10px;
+}
+.avatar-container {
+  height: 40px;
+  display: inline-block;
+  position: absolute;
+  right: 35px;
+  margin-top: 10px;
+}
+.user-avatar {
+  border-radius: 10px;
+  cursor: pointer;
 }
 </style>
