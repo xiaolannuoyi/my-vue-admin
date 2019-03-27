@@ -3,15 +3,27 @@ import Router from "vue-router";
 
 Vue.use(Router);
 
+import Layout from "@/views/layout/layout";
+
 //如首页和登录页和一些不用权限的公用页面
 export const commontRouterMap = [
   {
     path: "/login",
+    hidden: true, //不在slider显示
     component: () => import("@/views/login/index")
   },
   {
     path: "/",
-    component: () => import("@/views/Home")
+    component: Layout,
+    redirect: "/home",
+    name: "Home",
+    hidden: true,
+    children: [
+      {
+        path: "home",
+        component: () => import("@/views/home")
+      }
+    ]
   }
 ];
 
@@ -25,15 +37,24 @@ export default new Router({
 //动态需要根据权限加载的路由表
 export const asyncRouterMap = [
   {
-    path: "/admin",
-    component: () => import("@/views/admin"),
-    name: "admin--",
-    meta: { role: ["admin"] } //页面需要的权限
-  },
-  {
-    path: "/editor",
-    component: () => import("@/views/editor"),
-    name: "editor--",
-    meta: { role: ["editor"] } //页面需要的权限
+    path: "/example",
+    component: Layout,
+    redirect: "/example/table",
+    name: "Example",
+    meta: { title: "Example", icon: "el-icon-info" },
+    children: [
+      {
+        path: "table",
+        name: "Table",
+        component: () => import("@/views/table/index"),
+        meta: { title: "Table", icon: "el-icon-info" }
+      },
+      {
+        path: "tree",
+        name: "Tree",
+        component: () => import("@/views/tree/index"),
+        meta: { title: "Tree", icon: "el-icon-info" }
+      }
+    ]
   }
 ];
