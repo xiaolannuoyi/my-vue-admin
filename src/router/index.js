@@ -21,7 +21,7 @@ export const commontRouterMap = [{
         children: [{
             path: "home",
             component: () =>
-                import ("@/views/home")
+                import ("@/views/Home")
         }]
     }
 ];
@@ -40,17 +40,17 @@ export const asyncRouterMap = [{
         meta: { title: "Home", icon: "el-icon-menu" }
     },
     {
-        path: "/example",
+        path: "/css",
         component: Layout,
-        redirect: "/example/table",
-        name: "Example",
-        meta: { title: "Example", icon: "el-icon-info" },
+        redirect: "/css/cssAnimation",
+        name: "css",
+        meta: { title: "css", icon: "el-icon-info" },
         children: [{
-                path: "table",
-                name: "Table",
+                path: "cssAnimation",
+                name: "cssAnimation",
                 component: () =>
-                    import ("@/views/table/index"),
-                meta: { title: "Table", icon: "el-icon-info" }
+                    import ("@/views/cssAnimation/index"),
+                meta: { title: "cssAnimation", icon: "el-icon-info" }
             },
             {
                 path: "tree",
