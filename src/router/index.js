@@ -50,14 +50,14 @@ export const asyncRouterMap = [{
                 name: "cssAnimation",
                 component: () =>
                     import ("@/views/cssAnimation/index"),
-                meta: { title: "cssAnimation", icon: "el-icon-info" }
+                meta: { title: "css逐帧动画", icon: "el-icon-info" }
             },
             {
-                path: "tree",
-                name: "Tree",
+                path: "vanilla-tilt",
+                name: "vanilla-tilt",
                 component: () =>
-                    import ("@/views/tree/index"),
-                meta: { title: "Tree", icon: "el-icon-info" }
+                    import ("@/views/vanilla-tilt/index"),
+                meta: { title: "vanilla-tilt", icon: "el-icon-info" }
             }
         ]
     }

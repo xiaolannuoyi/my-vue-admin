@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h1>使用<a href="https://github.com/Leopoldthecoder/Perspective" target='_blank'>perspective.js</a></h1>
     <div class="jumbotron">
       <div>
         <img class="jumbotron-plant-2" src="@/assets/home/plant-2.png" />
@@ -44,7 +45,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .jumbotron {
   width: 890px;
   height: 465px;
