@@ -12,7 +12,7 @@ export default {};
 
 <style scoped>
 .people {
-  background: url(/static/css-animation/people.jpg);
+  background: url('../../assets/css-animation/people.jpg');
   width: 130px;
   height: 200px;
   background-size: 520px;
@@ -26,7 +26,7 @@ export default {};
 }
 
 .happy {
-  background: url(/static/css-animation/happy.jpg);
+  background: url(../../assets/css-animation/happy.jpg);
   width: 127.5px;
   height: 240px;
   background-size: 510px;
