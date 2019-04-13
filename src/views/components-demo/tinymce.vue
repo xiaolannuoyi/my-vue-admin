@@ -13,7 +13,7 @@ import TinymceInline from '@/components/tinymce/tinymce-inline'
 
 export default {
   components: {
-    TinymceDefault,TinymceInlineß
+    TinymceDefault,TinymceInline
   },
 }
 </script>
