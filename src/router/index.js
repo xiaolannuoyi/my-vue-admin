@@ -60,5 +60,18 @@ export const asyncRouterMap = [{
                 meta: { title: "vanilla-tilt", icon: "el-icon-info" }
             }
         ]
+    },
+    {
+        path: "/component",
+        component: Layout,
+        meta: { title: "组件", icon: "el-icon-info" },
+        children: [{
+                path: "tinymce",
+                name: "tinymce",
+                component: () =>
+                    import ("@/views/components-demo/tinymce"),
+                meta: { title: "富文本编辑器", icon: "el-icon-info" }
+            },
+        ]
     }
 ];
