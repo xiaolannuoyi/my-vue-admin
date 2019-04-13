@@ -14,8 +14,8 @@ export default {
   data() {
     return {
       init: {
-        skin_url: "/tinymce/skins/ui/oxide",
-        language_url: "/tinymce/langs/zh_CN.js",
+        skin_url: "static/tinymce/skins/ui/oxide",
+        language_url: "static/tinymce/langs/zh_CN.js",
         language: "zh_CN",
       },
       myValue:'hello,world'
