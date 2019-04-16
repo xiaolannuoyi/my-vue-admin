@@ -3,7 +3,9 @@
     <sidebar class="sidebar"></sidebar>
     <div class="main">
       <my-header></my-header>
-      <router-view></router-view>
+      <div class="view">
+        <router-view></router-view>
+      </div>
     </div>
   </div>
 </template>
@@ -27,12 +29,26 @@ export default {
   methods: {}
 };
 </script>
+<style>
+.view {
+  min-height: calc(100vh - 60px);
+}
+</style>
 
 <style lang="scss">
+.app-wrapper {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+}
+
 .main {
   min-height: 100%;
   margin-left: 200px;
   transition: margin-left 0.28s;
+  position: relative;
+  overflow: hidden;
 }
 .sidebar {
   transition: width 0.28s;

@@ -42,14 +42,14 @@ export const asyncRouterMap = [{
     {
         path: "/css",
         component: Layout,
-        redirect: "/css/cssAnimation",
+        redirect: "/css/css-animation-step",
         name: "css",
         meta: { title: "css", icon: "el-icon-info" },
         children: [{
-                path: "cssAnimation",
-                name: "cssAnimation",
+                path: "css-animation-step",
+                name: "css-animation-step",
                 component: () =>
-                    import ("@/views/cssAnimation/index"),
+                    import ("@/views/css-animation-step/index"),
                 meta: { title: "css逐帧动画", icon: "el-icon-info" }
             },
             {
@@ -58,6 +58,20 @@ export const asyncRouterMap = [{
                 component: () =>
                     import ("@/views/vanilla-tilt/index"),
                 meta: { title: "vanilla-tilt", icon: "el-icon-info" }
+            },
+            {
+                path: "css-svg",
+                name: "css-svg",
+                component: () =>
+                    import ("@/views/css-svg/index"),
+                meta: { title: "css-svg", icon: "el-icon-info" }
+            },
+            {
+                path: "css-animation-hover",
+                name: "css-animation-hover",
+                component: () =>
+                    import ("@/views/css-animation-hover/index"),
+                meta: { title: "css-animation-hover", icon: "el-icon-info" }
             }
         ]
     },
