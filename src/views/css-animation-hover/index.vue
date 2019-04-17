@@ -6,12 +6,12 @@
         <expand-letter></expand-letter>
       </div>
     </el-tab-pane>
-    <!-- <el-tab-pane label="svg-line" name="fourth">
+    <el-tab-pane label="svg-line" name="fourth">
        <div class="svg-line">
-        <svg-outline></svg-outline>
+        <h1 style="color:#fff;">测试travis-ci</h1>
       </div>
     </el-tab-pane>
-    <el-tab-pane label="svg-button1" name="second">
+    <!-- <el-tab-pane label="svg-button1" name="second">
       <div class="svg-line">
         <svg-button1></svg-button1>
       </div>
@@ -25,7 +25,7 @@
       <div class="svg-line">
         <svg-button3></svg-button3>
       </div>
-    </el-tab-pane> -->
+    </el-tab-pane>  -->
   </el-tabs>
 </div>
  
