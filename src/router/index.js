@@ -104,5 +104,33 @@ export const asyncRouterMap = [
             meta: { title: "富文本编辑器", icon: "el-icon-info" }
         },
         ]
+    },
+    {
+        path: "/practice",
+        component: Layout,
+        redirect: "/practice/dialog",
+        meta: { title: "实践", icon: "el-icon-info" },
+        children: [{
+            path: "dialog",
+            name: "dialog",
+            component: () =>
+                import("@/views/dialog/index"),
+            meta: { title: "公共dialog子组件", icon: "el-icon-info" }
+        },
+        {
+            path: "path1",
+            name: "path1",
+            component: () =>
+                import("@/views/commonrouter/index"),
+            meta: { title: "调用同一组件", icon: "el-icon-info" }
+        },
+        {
+            path: "path2",
+            name: "path2",
+            component: () =>
+                import("@/views/commonrouter/index"),
+            meta: { title: "调用同一组件", icon: "el-icon-info" }
+        },
+        ]
     }
 ];

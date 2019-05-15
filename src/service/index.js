@@ -48,5 +48,21 @@ class serviceManger {
                 });
         });
     }
+    //测试 调用同一组件
+    getTest(name) {
+        return new Promise((resolve, reject) => {
+            return service({
+                    url: "/test/getTest",
+                    method: "get",
+                    params: { name }
+                })
+                .then(response => {
+                    resolve(response);
+                })
+                .catch(error => {
+                    reject(error);
+                });
+        });
+    }
 }
 export default new serviceManger();
