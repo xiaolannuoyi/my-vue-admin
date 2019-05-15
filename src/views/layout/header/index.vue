@@ -1,27 +1,25 @@
 <template>
   <div class="header">
-    <i
-      :class="[
+    <div id="header-sidebar-open-close">
+      <i
+        :class="[
         getsidebar.opened ? 'el-icon-caret-right' : 'el-icon-caret-left',
         'icon'
       ]"
-      @click="toggleSideBar"
-    ></i>
+        @click="toggleSideBar"
+      ></i>
+    </div>
 
     <!-- 右侧下拉菜单 -->
-    <el-dropdown class="avatar-container">
+    <el-dropdown class="avatar-container" id="header-right">
       <span>
-        <img :src="getavatar + '?imageView2/1/w/40/h/40'" class="user-avatar" />
+        <img :src="getavatar + '?imageView2/1/w/40/h/40'" class="user-avatar">
       </span>
       <el-dropdown-menu slot="dropdown">
         <router-link to="/">
-          <el-dropdown-item>
-            Home
-          </el-dropdown-item>
+          <el-dropdown-item>Home</el-dropdown-item>
         </router-link>
-        <el-dropdown-item divided @click.native="logout"
-          >退出登录</el-dropdown-item
-        >
+        <el-dropdown-item divided @click.native="logout">退出登录</el-dropdown-item>
       </el-dropdown-menu>
     </el-dropdown>
   </div>
@@ -66,5 +64,8 @@ export default {
 .user-avatar {
   border-radius: 10px;
   cursor: pointer;
+}
+#header-sidebar-open-close {
+  display: inline-block;
 }
 </style>

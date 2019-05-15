@@ -6,22 +6,33 @@ Vue.use(Router);
 import Layout from "@/views/layout/layout";
 
 //如首页和登录页和一些不用权限的公用页面
-export const commontRouterMap = [{
+export const commontRouterMap = [
+    {
         path: "/login",
         hidden: true, //不在slider显示
         component: () =>
-            import ("@/views/login/index")
+            import("@/views/login/index")
     },
     {
         path: "/",
         component: Layout,
         redirect: "/home",
-        name: "Home",
         hidden: true,
         children: [{
             path: "home",
             component: () =>
-                import ("@/views/Home")
+                import("@/views/Home")
+        }]
+    },
+    {
+        path: "/home",
+        component: Layout,
+        redirect: "/home/guide",
+        hidden: true,
+        children: [{
+            path: "guide",
+            component: () =>
+                import("@/views/guide/index"),
         }]
     }
 ];
@@ -34,10 +45,16 @@ export default new Router({
 
 //异步挂载的路由
 //动态需要根据权限加载的路由表
-export const asyncRouterMap = [{
+export const asyncRouterMap = [
+    {
         path: "/home",
         component: Layout,
         meta: { title: "Home", icon: "el-icon-menu" }
+    },
+    {
+        path: "/home/guide",
+        component: Layout,
+        meta: { title: "引导页", icon: "el-icon-menu" }
     },
     {
         path: "/css",
@@ -45,32 +62,32 @@ export const asyncRouterMap = [{
         redirect: "/css/css-animation-step",
         name: "css",
         meta: { title: "css", icon: "el-icon-info" },
-        children: [{
-                path: "css-animation-step",
-                name: "css-animation-step",
-                component: () =>
-                    import ("@/views/css-animation-step/index"),
-                meta: { title: "css逐帧动画", icon: "el-icon-info" }
-            },
+        children: [
             {
                 path: "vanilla-tilt",
                 name: "vanilla-tilt",
                 component: () =>
-                    import ("@/views/vanilla-tilt/index"),
+                    import("@/views/vanilla-tilt/index"),
                 meta: { title: "vanilla-tilt", icon: "el-icon-info" }
+            }, {
+                path: "css-animation-step",
+                name: "css-animation-step",
+                component: () =>
+                    import("@/views/css-animation-step/index"),
+                meta: { title: "css逐帧动画", icon: "el-icon-info" }
             },
             {
                 path: "css-svg",
                 name: "css-svg",
                 component: () =>
-                    import ("@/views/css-svg/index"),
+                    import("@/views/css-svg/index"),
                 meta: { title: "css-svg", icon: "el-icon-info" }
             },
             {
                 path: "css-animation-hover",
                 name: "css-animation-hover",
                 component: () =>
-                    import ("@/views/css-animation-hover/index"),
+                    import("@/views/css-animation-hover/index"),
                 meta: { title: "css-animation-hover", icon: "el-icon-info" }
             }
         ]
@@ -80,12 +97,12 @@ export const asyncRouterMap = [{
         component: Layout,
         meta: { title: "组件", icon: "el-icon-info" },
         children: [{
-                path: "tinymce",
-                name: "tinymce",
-                component: () =>
-                    import ("@/views/components-demo/tinymce"),
-                meta: { title: "富文本编辑器", icon: "el-icon-info" }
-            },
+            path: "tinymce",
+            name: "tinymce",
+            component: () =>
+                import("@/views/components-demo/tinymce"),
+            meta: { title: "富文本编辑器", icon: "el-icon-info" }
+        },
         ]
     }
 ];
