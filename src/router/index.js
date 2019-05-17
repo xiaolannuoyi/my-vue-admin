@@ -131,6 +131,13 @@ export const asyncRouterMap = [
                 import("@/views/commonrouter/index"),
             meta: { title: "调用同一组件", icon: "el-icon-info" }
         },
+        {
+            path: "exportfile",
+            name: "exportfile",
+            component: () =>
+                import("@/views/exportfile/index"),
+            meta: { title: "批量导入数据", icon: "el-icon-info" }
+        },
         ]
     }
 ];
