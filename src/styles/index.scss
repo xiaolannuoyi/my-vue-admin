@@ -1,3 +1,5 @@
+@import './variables.scss';
+@import './sidebar.scss';
 body {
     height: 100%;
     -moz-osx-font-smoothing: grayscale;
@@ -14,12 +16,3 @@ html {
 #app {
     height: 100%;
 }
-
-// a,
-// a:focus,
-// a:hover {
-//     cursor: pointer;
-//     color: inherit;
-//     outline: none;
-//     text-decoration: none;
-// }

@@ -1,11 +1,9 @@
 <template>
   <div :class="classObj" class="app-wrapper">
-    <sidebar class="sidebar"></sidebar>
-    <div class="main">
+    <sidebar class="sidebar-container"></sidebar>
+    <div class="main-container">
       <my-header></my-header>
-      <div class="view">
-        <router-view></router-view>
-      </div>
+      <router-view></router-view>
     </div>
   </div>
 </template>
@@ -29,60 +27,12 @@ export default {
   methods: {}
 };
 </script>
-<style>
-.view {
-  min-height: calc(100vh - 60px);
-}
-</style>
 
-<style lang="scss">
+<style lang="scss" scoped>
+@import "~@/styles/variables.scss";
 .app-wrapper {
   position: relative;
   height: 100%;
   width: 100%;
-  overflow-x: hidden;
-}
-
-.main {
-  min-height: 100%;
-  margin-left: 200px;
-  transition: margin-left 0.28s;
-  position: relative;
-  overflow: hidden;
-}
-.sidebar {
-  transition: width 0.28s;
-  width: 200px;
-  height: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  overflow: hidden;
-  .el-menu {
-    border: none;
-    height: 100%;
-    width: 100% !important;
-  }
-}
-.hideSidebar {
-  .main {
-    margin-left: 64px;
-  }
-  .sidebar {
-    width: 64px;
-  }
-  .el-menu--collapse {
-    .el-submenu {
-      & > .el-submenu__title {
-        & > span {
-          height: 0;
-          width: 0;
-          overflow: hidden;
-          visibility: hidden;
-          display: inline-block;
-        }
-      }
-    }
-  }
 }
 </style>

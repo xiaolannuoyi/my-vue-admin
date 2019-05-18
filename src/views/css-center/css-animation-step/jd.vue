@@ -8,7 +8,7 @@ export default {};
 
 <style scoped>
 .img {
-  background: url('../../assets/css-animation/jd.png');
+  background: url('../../../assets/css-animation/jd.png');
   width: 100px;
   height: 105px;
   background-size: 100px;
