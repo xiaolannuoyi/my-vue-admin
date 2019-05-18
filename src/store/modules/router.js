@@ -1,11 +1,33 @@
 import { asyncRouterMap, commontRouterMap } from "@/router";
 
+
 function hasPermission(roles, route) {
   if (route.meta && route.meta.role) {
-    return roles.some(role => route.meta.role.indexOf(role) >= 0);
+    return route.meta.role.includes(roles)
   } else {
-    return true;
+    return true
   }
+}
+
+/**
+ * Filter asynchronous routing tables by recursion
+ * @param routes asyncRoutes
+ * @param roles
+ */
+export function filterAsyncRoutes(routes, roles) {
+  const res = []
+
+  routes.forEach(route => {
+    const tmp = { ...route }
+    if (hasPermission(roles, tmp)) {
+      if (tmp.children) {
+        tmp.children = filterAsyncRoutes(tmp.children, roles)
+      }
+      res.push(tmp)
+    }
+  })
+
+  return res
 }
 
 const router = {
@@ -27,29 +49,7 @@ const router = {
     GenerateRoutes({ commit }, data) {
       return new Promise(resolve => {
         const { roles } = data;
-        console.log('123',roles);
-        
-        const accessedRouters = asyncRouterMap.filter(v => {
-          if (v.meta.role.indexOf(roles) >= 0) {
-            if (v.children && v.children.length > 0) {
-              v.children = v.children.map(child => {
-                if (child.hidden && Object.prototype.toString.call(child.hidden) == '[object Array]') {
-                  child.hidden = child.hidden.indexOf(roles) >= 0 ? true : false;
-                }
-                return child;
-              }).filter(child1 => {
-                if (child1.meta.role.indexOf(roles) >= 0) {
-                  return child1;
-                }
-                return false;
-              });
-              return v;
-            } else {
-              return v;
-            }
-          }
-          return false;
-        });
+        let accessedRouters = filterAsyncRoutes(asyncRouterMap, roles)
         console.log("accessedRouters", accessedRouters);
 
         commit("SET_ROUTERS", accessedRouters);
