@@ -1,10 +1,13 @@
 <template>
-    <a href>
+<div class="svg-line">
+  <a href>
       <svg>
         <rect></rect>
       </svg>
       Button
     </a>
+</div>
+    
 </template>
 
 <script>

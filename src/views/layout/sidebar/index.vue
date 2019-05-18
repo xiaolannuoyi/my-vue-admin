@@ -29,8 +29,8 @@ export default {
       return !this.getsidebar.opened;
     },
     variables() {
-      return variables
-    },
+      return variables;
+    }
   }
 };
 </script>

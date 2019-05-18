@@ -27,14 +27,17 @@ const router = {
     GenerateRoutes({ commit }, data) {
       return new Promise(resolve => {
         const { roles } = data;
-
         const accessedRouters = asyncRouterMap.filter(v => {
-          if (roles.indexOf("admin") >= 0) return true; //admin 返回asyncRouterMap 全部路由
-          if (hasPermission(roles, v)) {
+          if(v.meta.role.indexOf(roles)>=0){
             if (v.children && v.children.length > 0) {
-              v.children = v.children.filter(child => {
-                if (hasPermission(roles, child)) {
-                  return child;
+              v.children = v.children.map(child => {
+                if(child.hidden && Object.prototype.toString.call(child.hidden)== '[object Array]'){
+                    child.hidden = child.hidden.indexOf(roles)>=0 ?true:false;
+                }
+                return child;
+              }).filter(child1 => {
+                if (child1.meta.role.indexOf(roles)>=0) {
+                  return child1;
                 }
                 return false;
               });
@@ -44,7 +47,7 @@ const router = {
             }
           }
           return false;
-        });
+ });
         console.log("accessedRouters", accessedRouters);
 
         commit("SET_ROUTERS", accessedRouters);

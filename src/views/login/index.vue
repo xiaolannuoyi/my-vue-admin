@@ -41,6 +41,12 @@
       <div>
         <span style="margin-right:20px;">username: admin</span>
         <span>password: admin</span>
+        <p>用于显示插件</p>
+      </div>
+      <div>
+        <span style="margin-right:20px;">username: editor</span>
+        <span>password: editor</span>
+        <p>用于个人实践</p>
       </div>
     </el-form>
   </div>
