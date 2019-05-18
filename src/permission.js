@@ -18,7 +18,7 @@ router.beforeEach((to, from, next) => {
       next({ path: "/" });
     } else {
       console.log("有token , 非 去登录页,");
-      if (store.getters.getroles.length === 0) {
+      if (!store.getters.getroles) {
         // 判断当前用户是否已拉取完user_info信息
         console.log("拉取用户信息");
         store

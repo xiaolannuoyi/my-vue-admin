@@ -37,11 +37,6 @@ export const commontRouterMap = [
     }
 ];
 
-//实例化vue的时候只挂载constantRouter
-export default new Router({
-    // mode: "history",
-    routes: commontRouterMap
-});
 
 //异步挂载的路由
 //动态需要根据权限加载的路由表
@@ -141,3 +136,20 @@ export const asyncRouterMap = [
         ]
     }
 ];
+
+//实例化vue的时候只挂载commontRouterMap
+const createRouter = () => new Router({
+    // mode: 'history', // require service support
+    scrollBehavior: () => ({ y: 0 }),
+    routes: commontRouterMap
+  })
+  
+  const router = createRouter()
+  
+  // Detail see: https://github.com/vuejs/vue-router/issues/1234#issuecomment-357941465
+  export function resetRouter() {
+    const newRouter = createRouter()
+    router.matcher = newRouter.matcher // reset router
+  }
+  
+  export default router;

@@ -1,4 +1,5 @@
 import serviceManger from "@/service/index";
+import { resetRouter } from '@/router'
 
 // import cookie from "@/utils/cookie.js";
 import cookie from "js-cookie";
@@ -9,7 +10,7 @@ const user = {
         token: cookie.get(app),
         name: "",
         avatar: "",
-        roles: []
+        roles: ''
     },
     mutations: {
         SET_TOKEN(state, token) {
@@ -53,12 +54,7 @@ const user = {
                 serviceManger.getInfo(state.token).then(response => {
                     if (response) {
                         const data = response.result;
-                        if (data.roles && data.roles.length > 0) {
-                            // 验证返回的roles是否是一个非空数组
-                            commit("SET_ROLES", data.roles);
-                        } else {
-                            reject("getInfo: roles must be a non-null array !");
-                        }
+                        commit("SET_ROLES", data.roles);
                         commit("SET_NAME", data.name);
                         commit("SET_AVATAR", data.avatar);
 
@@ -76,15 +72,25 @@ const user = {
                     .logout(state.token)
                     .then(() => {
                         commit("SET_TOKEN", "");
-                        commit("SET_ROLES", []);
+                        commit('SET_ROLES', "")
                         cookie.remove(app);
+                        resetRouter()
                         resolve();
                     })
                     .catch(error => {
                         reject(error);
                     });
             });
-        }
+        },
+        // remove token
+        resetToken({ commit }) {
+            return new Promise(resolve => {
+                commit('SET_TOKEN', '')
+                commit('SET_ROLES', "")
+                cookie.remove(app);
+                resolve()
+            })
+        },
     }
 };
 export default user;
