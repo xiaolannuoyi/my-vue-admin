@@ -23,6 +23,9 @@ export function filterAsyncRoutes(routes, roles) {
       if (tmp.children) {
         tmp.children = filterAsyncRoutes(tmp.children, roles)
       }
+      if (tmp.hidden && typeof tmp.hidden !== 'boolean') {
+        tmp.hidden = tmp.hidden.includes(roles) ? true : false;
+      }
       res.push(tmp)
     }
   })

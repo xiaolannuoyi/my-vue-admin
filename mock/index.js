@@ -10,4 +10,10 @@ Mock.mock("/user/logout", "post", userAPI.logout);
 
 
 Mock.mock(/\/test\/getTest\.*/, "get", testAPI.getTest);
+Mock.mock(/\/test\/getTableByPage\.*/, "get", testAPI.getTableByPage);
+Mock.mock(/\/test\/getTableByAll/, "get", testAPI.getTableByAll);
+
+
+Mock.setup({ timeout: '100-2000' });
+
 export default Mock;

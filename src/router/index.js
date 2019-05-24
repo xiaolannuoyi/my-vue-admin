@@ -133,6 +133,13 @@ export const asyncRouterMap = [
                 import("@/views/practice-center/exportfile/index"),
             meta: { title: "批量导入数据",  role:['editor']}
         },
+        {
+            path: "table",
+            name: "table",
+            component: () =>
+                import("@/views/practice-center/table/index"),
+            meta: { title: "table",  role:['editor']}
+        },
         ]
     }
 ];

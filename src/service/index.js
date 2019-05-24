@@ -64,5 +64,36 @@ class serviceManger {
                 });
         });
     }
+    //table数据 按页查询
+    getTableByPage(currentPage,pageSize) {
+        return new Promise((resolve, reject) => {
+            return service({
+                    url: "/test/getTableByPage",
+                    method: "get",
+                    params: { currentPage,pageSize }
+                })
+                .then(response => {
+                    resolve(response);
+                })
+                .catch(error => {
+                    reject(error);
+                });
+        });
+    }
+    //table数据 查询所有
+    getTableByAll(){
+        return new Promise((resolve, reject) => {
+            return service({
+                    url: "/test/getTableByAll",
+                    method: "get",
+                })
+                .then(response => {
+                    resolve(response);
+                })
+                .catch(error => {
+                    reject(error);
+                });
+        });
+    }
 }
 export default new serviceManger();

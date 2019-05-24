@@ -16,7 +16,6 @@ import "./permission";
 import "../mock"; //mock.js
 import serviceManger from "@/service/index"; //请求服务的所有代码
 Vue.prototype.$serviceManger = serviceManger; //其中$xx为新命的名。全局引入
-
 new Vue({
     router,
     store,
