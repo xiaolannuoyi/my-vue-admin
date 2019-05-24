@@ -13,6 +13,11 @@ export default {
   components: {
     MyDialog
   },
+  data(){
+    return{
+      name:'hello'
+    }
+  },
   methods: {
     opendialog() {
       this.$refs.dialog.open();

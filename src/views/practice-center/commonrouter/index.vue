@@ -8,8 +8,6 @@
 </template>
 
 <script>
-import serviceManger from "@/service/index";
-
 export default {
   data() {
     return {
@@ -41,7 +39,7 @@ export default {
   },
   methods: {
     getmessage(name) {
-      serviceManger.getTest(name).then(data => {
+      this.$serviceManger.getTest(name).then(data => {
         this.name = data.result;
       });
     }

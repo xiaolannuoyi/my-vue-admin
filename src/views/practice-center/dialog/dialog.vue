@@ -1,6 +1,6 @@
 <template>
   <el-dialog title="提示" :visible.sync="dialogswitch" width="30%">
-    <span>hello</span>
+    <span>{{$parent.name}}</span>
     <span slot="footer" class="dialog-footer">
       <el-button @click="close">取 消</el-button>
       <el-button type="primary" @click="submit">确 定</el-button>
@@ -12,9 +12,14 @@
 export default {
   data() {
     return {
-      dialogswitch: false
+      dialogswitch: false,
     };
   },
+  // computed:{
+  //   name(){
+  //     return this.$parent.name
+  //   }
+  // },
   methods: {
     open() {
       this.dialogswitch = true;
