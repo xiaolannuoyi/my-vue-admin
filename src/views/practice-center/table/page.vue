@@ -37,16 +37,14 @@ export default {
       let end = currentPage * this.page.pageSize;
       let length = result.length;
       let tableData = [];
-      if (end > length) {
-        tableData = result.slice(start);
-      } else {
-        tableData = result.slice(start, end);
-      }
-      this.$emit('update:tableData',tableData)
+      tableData = result.slice(start, end);
+      this.$emit('update:tableData',tableData);
     }
   },
   watch:{
       result(val){
+          this.page.totalPage = val.length;
+          this.page.currentPage = 1;
           this.current_change(this.page.currentPage)
       }
   }

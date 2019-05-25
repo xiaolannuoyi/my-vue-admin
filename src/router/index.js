@@ -140,6 +140,13 @@ export const asyncRouterMap = [
                 import("@/views/practice-center/table/index"),
             meta: { title: "table",  role:['editor']}
         },
+        {
+            path: "par-child",
+            name: "par-child",
+            component: () =>
+                import("@/views/practice-center/par-child/index"),
+            meta: { title: "par-child",  role:['editor']}
+        },
         ]
     }
 ];
