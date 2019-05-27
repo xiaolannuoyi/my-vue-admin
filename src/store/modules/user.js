@@ -39,7 +39,7 @@ const user = {
                 serviceManger.login(username, userInfo.password).then(response => {
                     if (response) {
                         // cookie.setCookie(app, response.result, 60); //60为 1分钟
-                        cookie.set(app, response.result); //
+                        cookie.set(app, response.result,{ expires:  1}); //1/(24*60) 1分钟，1/24 1小时
                         commit("SET_TOKEN", response.result);
                         resolve(response);
                     } else {

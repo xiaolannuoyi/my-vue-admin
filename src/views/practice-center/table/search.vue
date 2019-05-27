@@ -22,7 +22,6 @@ export default {
       let arr = [];
       let reg = new RegExp(this.searchContent);
       for (let i = 0; i < len; i++) {
-        //如果字符串中不包含目标字符会返回-1
         if (this.Allresult[i][this.searchKey].match(reg)) {
           arr.push(this.Allresult[i]);
         }

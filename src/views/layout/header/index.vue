@@ -3,7 +3,7 @@
     <div id="header-sidebar-open-close">
       <i
         :class="[
-        getsidebar.opened ? 'el-icon-caret-right' : 'el-icon-caret-left',
+        getsidebar.opened ? 'my-icon-right-square' : 'my-icon-left-square',
         'icon'
       ]"
         @click="toggleSideBar"
@@ -57,8 +57,10 @@ export default {
   height: 60px;
 }
 .icon {
-  font-size: 40px;
-  margin-top: 10px;
+  font-size: 30px;
+  line-height: 60px;
+  margin-left: 10px;
+  color: #409EFF;
 }
 .avatar-container {
   height: 40px;

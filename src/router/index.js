@@ -44,7 +44,7 @@ export const asyncRouterMap = [
     {
         path: "/home",
         component: Layout,
-        meta: { title: "Home", icon: "el-icon-menu",role:['admin','editor']}
+        meta: { title: "Home", icon: "my-icon-home-fill",role:['admin','editor']}
     },
     {
         path: "/home/guide",
@@ -139,13 +139,6 @@ export const asyncRouterMap = [
             component: () =>
                 import("@/views/practice-center/table/index"),
             meta: { title: "table",  role:['editor']}
-        },
-        {
-            path: "par-child",
-            name: "par-child",
-            component: () =>
-                import("@/views/practice-center/par-child/index"),
-            meta: { title: "par-child",  role:['editor']}
         },
         ]
     }
