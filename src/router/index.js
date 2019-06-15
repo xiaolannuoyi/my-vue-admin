@@ -44,59 +44,80 @@ export const asyncRouterMap = [
     {
         path: "/home",
         component: Layout,
-        meta: { title: "Home", icon: "my-icon-home-fill",role:['admin','editor']}
+        meta: { title: "Home", icon: "my-icon-home-fill", role: ['admin', 'editor'] }
     },
     {
         path: "/home/guide",
         component: Layout,
-        meta: { title: "引导页", icon: "el-icon-menu",role:['admin'] }
+        meta: { title: "引导页", icon: "el-icon-menu", role: ['admin'] }
     },
     {
         path: "/css-center",
         component: Layout,
         redirect: "/css-center/css-animation-step",
         name: "css",
-        meta: { title: "css-center", icon: "el-icon-info",role:['admin','editor'] },
+        meta: { title: "css-center", icon: "el-icon-info", role: ['admin', 'editor'] },
         children: [
             {
                 path: "vanilla-tilt",
                 name: "vanilla-tilt",
                 component: () =>
                     import("@/views/css-center/vanilla-tilt/index"),
-                meta: { title: "vanilla-tilt",role:['admin']}
+                meta: { title: "vanilla-tilt", role: ['admin'] }
             }, {
                 path: "css-animation-step",
                 name: "css-animation-step",
                 component: () =>
                     import("@/views/css-center/css-animation-step/index"),
-                meta: { title: "css逐帧动画", role:['editor']}
+                meta: { title: "css逐帧动画", role: ['editor'] }
             },
             {
                 path: "css-svg",
                 name: "css-svg",
                 component: () =>
                     import("@/views/css-center/css-svg/index"),
-                meta: { title: "css-svg", role:['editor']}
+                meta: { title: "css-svg", role: ['editor'] }
             },
             {
                 path: "css-animation-hover",
                 name: "css-animation-hover",
                 component: () =>
                     import("@/views/css-center/css-animation-hover/index"),
-                meta: { title: "css-animation-hover", role:['editor']}
+                meta: { title: "css-animation-hover", role: ['editor'] }
             }
         ]
     },
     {
         path: "/component",
         component: Layout,
-        meta: { title: "组件", icon: "el-icon-info" ,role:['admin']},
+        meta: { title: "组件", icon: "el-icon-info", role: ['admin'] },
         children: [{
             path: "tinymce",
             name: "tinymce",
             component: () =>
                 import("@/views/components-demo/tinymce"),
-            meta: { title: "富文本编辑器",role:['admin']}
+            meta: { title: "富文本编辑器", role: ['admin'] }
+        },
+        {
+            path: "json",
+            name: "json",
+            component: () =>
+                import("@/views/components-demo/jsonEditor"),
+            meta: { title: "JSON", role: ['admin'] }
+        },
+        {
+            path: "jsoneditor",
+            name: "jsoneditor",
+            component: () =>
+                import("@/views/components-demo/jsoneditor/index"),
+            meta: { title: "jsoneditor", role: ['admin'] }
+        },
+        {
+            path: "hanzi-writer",
+            name: "hanzi-writer",
+            component: () =>
+                import("@/views/components-demo/hanzi-writer/index"),
+            meta: { title: "hanzi-writer", role: ['admin'] }
         },
         ]
     },
@@ -104,41 +125,55 @@ export const asyncRouterMap = [
         path: "/practice-center",
         component: Layout,
         redirect: "/practice-center/dialog",
-        meta: { title: "实践", icon: "el-icon-info",role:['editor'] },
+        meta: { title: "实践", icon: "el-icon-info", role: ['editor'] },
         children: [{
             path: "dialog",
             name: "dialog",
             component: () =>
                 import("@/views/practice-center/dialog/index"),
-            meta: { title: "公共dialog子组件",  role:['editor']}
+            meta: { title: "公共dialog子组件", role: ['editor'] }
         },
         {
             path: "path1",
             name: "path1",
             component: () =>
                 import("@/views/practice-center/commonrouter/index"),
-            meta: { title: "调用同一组件",  role:['editor']}
+            meta: { title: "调用同一组件", role: ['editor'] }
         },
         {
             path: "path2",
             name: "path2",
             component: () =>
                 import("@/views/practice-center/commonrouter/index"),
-            meta: { title: "调用同一组件",  role:['editor']}
+            meta: { title: "调用同一组件", role: ['editor'] }
         },
         {
             path: "exportfile",
             name: "exportfile",
             component: () =>
                 import("@/views/practice-center/exportfile/index"),
-            meta: { title: "批量导入数据",  role:['editor']}
+            meta: { title: "批量导入数据", role: ['editor'] }
         },
         {
             path: "table",
             name: "table",
             component: () =>
                 import("@/views/practice-center/table/index"),
-            meta: { title: "table",  role:['editor']}
+            meta: { title: "table", role: ['editor'] }
+        },
+        {
+            path: "step",
+            name: "step",
+            component: () =>
+                import("@/views/practice-center/step/index"),
+            meta: { title: "step", role: ['editor'] }
+        },
+        {
+            path: "test",
+            name: "test",
+            component: () =>
+                import("@/views/practice-center/test/index"),
+            meta: { title: "test", role: ['editor'] }
         },
         ]
     }
@@ -149,14 +184,14 @@ const createRouter = () => new Router({
     // mode: 'history', // require service support
     scrollBehavior: () => ({ y: 0 }),
     routes: commontRouterMap
-  })
-  
-  const router = createRouter()
-  
-  // Detail see: https://github.com/vuejs/vue-router/issues/1234#issuecomment-357941465
-  export function resetRouter() {
+})
+
+const router = createRouter()
+
+// Detail see: https://github.com/vuejs/vue-router/issues/1234#issuecomment-357941465
+export function resetRouter() {
     const newRouter = createRouter()
     router.matcher = newRouter.matcher // reset router
-  }
-  
-  export default router;
+}
+
+export default router;
