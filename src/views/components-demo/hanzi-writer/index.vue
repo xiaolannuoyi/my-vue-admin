@@ -45,25 +45,33 @@
       </svg>
       </div>
     </div>
-    <el-button type='primary' @click="animatefun2">Start</el-button>
+    <el-button type='primary' @click="animatefun2" :disabled="disabledBtn">Start</el-button>
     <!-- 测试 -->
     <div class="box">
       <div id="character-target-test"></div>
     </div>
     <el-button type='primary' @click="animatefun3">重写</el-button>
+    <tang-shi></tang-shi>
   </div>
 </template>
 
 <script>
 const HanziWriter = require("hanzi-writer");
+import loop from './mixin'
+import tangShi from './tangs'
 export default {
+  mixins: [loop],
+  components:{
+    tangShi
+  },
   data() {
     return {
       nitext: "",
       xun:'',
       myNametext: "潇蓝诺依",
       myName: [],
-      test:''
+      test:'',
+      disabledBtn:false,
     };
   },
   methods: {
@@ -71,26 +79,13 @@ export default {
       this.nitext.animateCharacter();
     },
     animatefun2() {
+      this.disabledBtn = true;
       let delayBetweenAnimations = 1000; // milliseconds
       this.myName.map(item => item.hideCharacter());
       this.loop(0, this.myName);
     },
     animatefun3() {
       this.test.quiz();
-    },
-    loop(i, myName) {
-      let delayBetweenAnimations = 100; // milliseconds
-      myName[i].animateCharacter({
-        onComplete: () => {
-          setTimeout(() => {
-            if (i < myName.length-1) {
-              this.loop(i + 1, myName);
-            } else {
-              return;
-            }
-          }, delayBetweenAnimations);
-        }
-      });
     }
   },
   mounted() {
@@ -118,7 +113,7 @@ export default {
       delayBetweenLoops: 300//循环动画
     });
     this.xun.loopCharacterAnimation()
-
+    //
     let a = this.myNametext.split("");
     a.forEach((item, index) => {
       this.myName[index] = HanziWriter.create(
