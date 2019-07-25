@@ -169,6 +169,13 @@ export const asyncRouterMap = [
             meta: { title: "step", role: ['editor'] }
         },
         {
+            path: "table-form",
+            name: "table-form",
+            component: () =>
+                import("@/views/practice-center/table-form/index"),
+            meta: { title: "表格内表单", role: ['editor'] }
+        },
+        {
             path: "test",
             name: "test",
             component: () =>
