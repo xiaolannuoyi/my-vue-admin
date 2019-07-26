@@ -47,6 +47,7 @@ export default {
   watch: {
     $route(to, from) {
       console.log("路由变化", to.path);
+      Object.assign(this.$data, this.$options.data())
       if (to.path == "/practice-center/path1") {
         this.getmessage("admin");
       } else {
