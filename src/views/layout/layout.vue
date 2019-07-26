@@ -3,7 +3,7 @@
     <sidebar class="sidebar-container"></sidebar>
     <div class="main-container">
       <my-header></my-header>
-      <router-view></router-view>
+      <router-view :key="$route.path"></router-view>
     </div>
   </div>
 </template>
