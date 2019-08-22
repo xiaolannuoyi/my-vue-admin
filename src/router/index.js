@@ -119,6 +119,20 @@ export const asyncRouterMap = [
                 import("@/views/components-demo/hanzi-writer/index"),
             meta: { title: "hanzi-writer", role: ['admin'] }
         },
+        {
+            path: "excel-export",
+            name: "excel-export",
+            component: () =>
+                import("@/views/components-demo/Excel/excel-export"),
+            meta: { title: "excel-export", role: ['admin'] }
+        },
+        {
+            path: "excel-import",
+            name: "excel-import",
+            component: () =>
+                import("@/views/components-demo/Excel/excel-import"),
+            meta: { title: "excel-import", role: ['admin'] }
+        },
         ]
     },
     {
