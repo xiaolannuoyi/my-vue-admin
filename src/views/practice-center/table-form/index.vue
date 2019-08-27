@@ -28,11 +28,7 @@
               :prop=" 'tableData.' + scope.$index + '.tel' "
               :rules=" { required: true, trigger: 'blur' ,validator: checkTel}"
             >
-              <el-input
-                v-model.number="scope.row.tel"
-                type="number"
-                @blur="telequalCheckblur(scope.$index,scope.row.tel)"
-              ></el-input>
+              <el-input v-model.number="scope.row.tel" type="number"></el-input>
             </el-form-item>
           </template>
         </el-table-column>
@@ -66,9 +62,6 @@ export default {
           }
         ]
       },
-      telequalFlag: false,
-      confirmflag:false,
-      telSet:new Set(),
     };
   },
   methods: {
@@ -106,42 +99,24 @@ export default {
     },
     checkTel(rule, value, callback) {
       let regTel = /^(((1[3456789][0-9]{1})|(15[0-9]{1}))+\d{8})$/;
+      let index = rule.field.split(".")[1];
       if (!value) {
         return callback(new Error("电话号码不能为空"));
       } else if (!regTel.test(value)) {
         callback(new Error("请输入正确的电话号码"));
-      } else if (this.telequalFlag) { 
-          // blur时校验
-          this.telequalFlag=false
+      } else if (this.telequalCheck(index, value)) {
         callback(new Error("电话号码重复,请重新填写"));
-      } else if (this.confirmflag && this.telequalCheckconfirm(value)) {
-          // confirm时校验
-          this.confirmflag = false;
-          this.telSet = new Set();
-        callback(new Error("电话号码重复,请重新填写"));
-      }else {
+      } else {
         callback();
       }
     },
-    //blur 校验 只是blur后的提示,
-    telequalCheckblur(index, value) {
-      let tableData = JSON.parse(JSON.stringify(this.form.tableData));
-      tableData.splice(index, 1);
-      this.telequalFlag = tableData.some(({ tel }) => {
-        return tel === value;
+    //相等判断
+    telequalCheck(index, value) {
+      return this.form.tableData.some(({ tel }, i) => {
+        return i == index ? false : tel === value;
       });
     },
-    // confirm 再次校验
-    telequalCheckconfirm(value){
-        if(this.telSet.has(value)){
-         return true
-        }else{
-         this.telSet.add(value)
-        }
-      return false
-    },
     confirm() {
-      this.confirmflag = true;
       this.$refs.form.validate(valid => {
         if (valid) {
           this.$message({
