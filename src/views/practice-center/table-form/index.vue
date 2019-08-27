@@ -89,11 +89,14 @@ export default {
     },
     checkName(rule, value, callback) {
       let regName = /^[\u4e00-\u9fa5]{2,4}$/;
+      let index = rule.field.split(".")[1];
       if (!value) {
         return callback(new Error("姓名不能为空"));
       } else if (!regName.test(value)) {
         callback(new Error("请输入正确的姓名"));
-      } else {
+      } else if (this.nameequalCheck(index, value)) {
+        callback(new Error("电话号码重复,请重新填写"));
+      }else {
         callback();
       }
     },
@@ -114,6 +117,11 @@ export default {
     telequalCheck(index, value) {
       return this.form.tableData.some(({ tel }, i) => {
         return i == index ? false : tel === value;
+      });
+    },
+    nameequalCheck(index, value) {
+      return this.form.tableData.some(({ name }, i) => {
+        return i == index ? false : name === value;
       });
     },
     confirm() {
