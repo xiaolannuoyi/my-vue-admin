@@ -29,9 +29,124 @@ export default {
           gatherLogs: [],
           imageResourceType: 0,
           labels: {
-            "agree-app-name": "gxz2",
+            "agree-app-name": "gxz1",
             "agree-app-type": "agree-application",
-            "agree-app-version": "0fee8542-ae33-49aa-a5b6-78b06f2a61c8"
+            "agree-app-version": "54550184-52c8-4d62-8d26-97e2fc127251"
+          },
+          limit: {
+            body_size: "10m",
+            connect_timeout: "10",
+            connections: "100",
+            rate: "50000",
+            rate_after: "50000",
+            read_timeout: "10",
+            rpm: "10000",
+            rps: "100",
+            send_time: "10",
+            whitelist: ""
+          },
+          log_config: "",
+          name: "gxz1",
+          namespace: "default",
+          podAffinity: {
+            affinity: true,
+            key: "",
+            required: false
+          },
+          priorityclassesName: "high-level",
+          readyReplicas: 1,
+          replicas: 1,
+          status: "1",
+          template: [
+            {
+              env: {
+                k1: "v1",
+                k2: "v2"
+              },
+              historyImages: {
+                "2019-08-27 02:32:43": "192.9.200.86:80/library/nginx:latest"
+              },
+              image: "library/nginx:latest",
+              lifecycle: {
+                path: "/",
+                port: 80,
+                type: "2"
+              },
+              limits: {
+                cpu: 1000,
+                memory: 2000
+              },
+              livenessProbe: {
+                failureThreshold: 3,
+                initSeconds: 15,
+                path: "/",
+                periodSeconds: 30,
+                port: 80,
+                timeoutSeconds: 30,
+                type: 2
+              },
+              nodeSelector: [],
+              ports: [
+                {
+                  extranet: false,
+                  intranetFullUrl: "gxz1.default:8080",
+                  intranetUrl: "gxz1:8080",
+                  portName: "web1",
+                  targetPort: 8080,
+                  type: 0
+                },
+                {
+                  extranet: true,
+                  extranetUrl: "http://acaas-gateway.scrcu/default/gxz1/web2",
+                  intranetFullUrl: "gxz1.default:8081",
+                  intranetUrl: "gxz1:8081",
+                  portName: "web2",
+                  targetPort: 8081,
+                  type: 1
+                },
+                {
+                  extranet: true,
+                  extranetPort: 31444,
+                  extranetUrl: "acaas-gateway.scrcu:31444",
+                  intranetFullUrl: "gxz1.default:80",
+                  intranetUrl: "gxz1:80",
+                  portName: "web3",
+                  targetPort: 80,
+                  type: 0
+                }
+              ],
+              proptemplate: {
+                "/mnt": ["/abs-config/demo", "/abs-config/abs.properties"],
+                "/var/lib/docker": ["/abs-system-config/filebeat.yaml"]
+              },
+              readinessProbe: {
+                failureThreshold: 5,
+                initSeconds: 15,
+                path: "",
+                periodSeconds: 3,
+                port: 80,
+                timeoutSeconds: 3,
+                type: 1
+              },
+              requests: {
+                cpu: 1000,
+                memory: 2000
+              },
+              terminationGracePeriodSeconds: 40,
+              volumeMap: {
+                "/mnt": "gxzfsdemo"
+              }
+            }
+          ]
+        },
+        {
+          events: [],
+          gatherLogs: [],
+          imageResourceType: 0,
+          labels: {
+            "agree-app-name": "web",
+            "agree-app-type": "agree-application",
+            "agree-app-version": "1da324c5-5358-492e-937b-5cd83f23f2ae"
           },
           limit: {
             body_size: "",
@@ -46,7 +161,7 @@ export default {
             whitelist: ""
           },
           log_config: "",
-          name: "gxz2",
+          name: "web",
           namespace: "default",
           podAffinity: {
             affinity: true,
@@ -61,7 +176,7 @@ export default {
             {
               env: {},
               historyImages: {
-                "2019-08-20 07:55:59": "192.9.200.86:80/library/tomcat:7.0"
+                "2019-08-23 08:17:12": "192.9.200.86:80/library/tomcat:7.0"
               },
               image: "library/tomcat:7.0",
               lifecycle: {},
@@ -74,11 +189,11 @@ export default {
               ports: [
                 {
                   extranet: true,
-                  extranetUrl: "http://acaas-gateway.scrcu/default/gxz2/web",
-                  intranetFullUrl: "gxz2.default:8080",
-                  intranetUrl: "gxz2:8080",
+                  extranetUrl: "http://acaas-gateway.scrcu/default/web/web",
+                  intranetFullUrl: "web.default:81",
+                  intranetUrl: "web:81",
                   portName: "web",
-                  targetPort: 8080,
+                  targetPort: 81,
                   type: 1
                 }
               ],
@@ -98,9 +213,9 @@ export default {
   methods: {
     exportfun() {
       let theader = this.getheader(this.arr);
-      console.log("theader", theader);
+      // console.log("theader", theader);
       let data = this.formatJson(theader, this.arr);
-      console.log("data", data);
+      // console.log("data", data);
       import("./Export2Excel").then(excel => {
         excel.export_json_to_excel({
           header: theader, //表头 必填
@@ -119,7 +234,7 @@ export default {
           } else if ({}.toString.call(v[j]) == "[object Array]") {
             return v[j].join("\n");
           } else if (v[j] === undefined) {
-            console.log("v.template[0]", "j", v.template[0][j]);
+            // console.log("v.template[0]", "j", v.template[0][j]);
             if ({}.toString.call(v.template[0][j]) == "[object Object]") {
               return this.getobj(v.template[0][j]);
             } else if ({}.toString.call(v.template[0][j]) == "[object Array]") {
