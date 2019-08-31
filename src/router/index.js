@@ -148,6 +148,13 @@ export const asyncRouterMap = [
             meta: { title: "公共dialog子组件", role: ['editor'] }
         },
         {
+            path: "dialog2",
+            name: "dialog2",
+            component: () =>
+                import("@/views/practice-center/dialog2/index"),
+            meta: { title: "dialog开关", role: ['editor'] }
+        },
+        {
             path: "path1",
             name: "path1",
             component: () =>
