@@ -1,12 +1,13 @@
 <template>
 <div class="svg-line">
-    <a href>
+  <a href>
       <svg>
         <rect></rect>
       </svg>
       Button
     </a>
 </div>
+    
 </template>
 
 <script>
@@ -27,9 +28,8 @@ a{
   text-transform: uppercase;//所有字符转成大写 
   font-size: 24px;
   letter-spacing: 2px;
-  color: #000;
+  color: #fff;
   text-decoration: none;
-  
   svg,svg rect{
     position: absolute;
     top: 0;
@@ -39,31 +39,27 @@ a{
     fill: transparent;
   }
   svg rect{
-    stroke: #000;
+    stroke: #fff;
     stroke-width: 4;
-    // transition: 1.5s;
-    //120 480
-    //240 0  // 240 120
-    //20 40
-    //480 480
-    stroke-dasharray: 120;//500 大于周长 所以是实线
-    animation: animate 3s linear infinite;
+    transition: 1s;
+    stroke-dasharray: 500,500;//500 大于周长 所以是实线
+    stroke-dashoffset: 0;//dash模式到路径开始的距离
+    animation: animate 1.5s linear infinite;
   }
-  
 }
 @keyframes animate {
   0% {
-    stroke-dashoffset: 480; //可以指定绘制虚线时的起始位置偏移
+    stroke-dashoffset: 240; //可以指定绘制虚线时的起始位置偏移
+    stroke-dasharray: 100,400;//虚线
+    stroke: #00bcd4
   }
   100% {
     stroke-dashoffset: 0;
   }
 }
 // a:hover svg rect{
-//   stroke-dashoffset: 0;//dash模式到路径开始的距离
-// }
-// a:hover{
-//     background: #ff0;
-//     transition-delay: 1.5s;
+//   stroke-dashoffset: 220;//dash模式到路径开始的距离
+//   stroke-dasharray: 100,400;//虚线
+//   stroke: #00bcd4;
 // }
 </style>

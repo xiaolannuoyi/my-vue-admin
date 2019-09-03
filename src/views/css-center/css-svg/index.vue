@@ -3,6 +3,7 @@
     <el-tabs v-model="activeName">
       <el-tab-pane label="svg-line" name="SvgLineStrokeAnimation"></el-tab-pane>
       <el-tab-pane label="svg-line" name="SvgOutline"></el-tab-pane>
+      <el-tab-pane label="Svg1" name="Svg1"></el-tab-pane>
       <el-tab-pane label="Svg3" name="Svg3"></el-tab-pane>
     </el-tabs>
     <component :ref="activeName" :is="activeName"></component>
@@ -13,11 +14,12 @@
 import SvgLineStrokeAnimation from "./SVG-Line-Stroke-Animation";
 import SvgOutline from "./SVG-Outline";
 import Svg3 from "./SVG-3";
-
+import Svg1 from "./SVG-1";
 export default {
   components: {
     SvgLineStrokeAnimation,
     SvgOutline,
+    Svg1,
     Svg3
   },
   data() {

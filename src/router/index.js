@@ -76,7 +76,14 @@ export const asyncRouterMap = [
                 name: "css-svg",
                 component: () =>
                     import("@/views/css-center/css-svg/index"),
-                meta: { title: "css-svg", role: ['editor'] }
+                meta: { title: "css-svg动画", role: ['editor'] }
+            },
+            {
+                path: "css-animation",
+                name: "css-animation",
+                component: () =>
+                    import("@/views/css-center/css-animation/index"),
+                meta: { title: "css动画", role: ['editor'] }
             },
             {
                 path: "css-animation-hover",
