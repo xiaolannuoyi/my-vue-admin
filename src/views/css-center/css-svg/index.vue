@@ -3,9 +3,7 @@
     <el-tabs v-model="activeName">
       <el-tab-pane label="svg-line" name="SvgLineStrokeAnimation"></el-tab-pane>
       <el-tab-pane label="svg-line" name="SvgOutline"></el-tab-pane>
-      <el-tab-pane label="svg-button1" name="SvgButton1"></el-tab-pane>
-      <el-tab-pane label="svg-button2" name="SvgButton2"></el-tab-pane>
-      <el-tab-pane label="svg-button3" name="SvgButton3"></el-tab-pane>
+      <el-tab-pane label="Svg3" name="Svg3"></el-tab-pane>
     </el-tabs>
     <component :ref="activeName" :is="activeName"></component>
   </div>
@@ -14,17 +12,13 @@
 <script>
 import SvgLineStrokeAnimation from "./SVG-Line-Stroke-Animation";
 import SvgOutline from "./SVG-Outline";
-import SvgButton1 from "./SVG-Button1";
-import SvgButton2 from "./SVG-Button2";
-import SvgButton3 from "./SVG-Button3";
+import Svg3 from "./SVG-3";
 
 export default {
   components: {
     SvgLineStrokeAnimation,
     SvgOutline,
-    SvgButton1,
-    SvgButton2,
-    SvgButton3
+    Svg3
   },
   data() {
     return {
