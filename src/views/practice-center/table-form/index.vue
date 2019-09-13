@@ -1,10 +1,11 @@
 <template>
   <div>
-    <el-form ref="form" :model="form">
+    <el-form ref="form" :model="form" label-width="20px">
       <el-table ref="table" :data="form.tableData" empty-text="暂无数据">
         <el-table-column label="姓名">
           <template slot-scope="scope">
             <el-form-item
+              label=" "
               :prop=" 'tableData.' + scope.$index + '.name' "
               :rules=" { required: true, trigger: 'blur' ,validator: checkName}"
             >
@@ -15,6 +16,7 @@
         <el-table-column label="年龄">
           <template slot-scope="scope">
             <el-form-item
+              label=" "
               :prop=" 'tableData.' + scope.$index + '.age' "
               :rules=" { required: true, trigger: 'blur' ,validator: checkAge}"
             >
@@ -25,6 +27,7 @@
         <el-table-column label="电话号码">
           <template slot-scope="scope">
             <el-form-item
+              label=" "
               :prop=" 'tableData.' + scope.$index + '.tel' "
               :rules=" { required: true, trigger: 'blur' ,validator: checkTel}"
             >
@@ -61,7 +64,7 @@ export default {
             tel: ""
           }
         ]
-      },
+      }
     };
   },
   methods: {
@@ -96,7 +99,7 @@ export default {
         callback(new Error("请输入正确的姓名"));
       } else if (this.nameequalCheck(index, value)) {
         callback(new Error("电话号码重复,请重新填写"));
-      }else {
+      } else {
         callback();
       }
     },
