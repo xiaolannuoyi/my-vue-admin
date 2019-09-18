@@ -140,6 +140,13 @@ export const asyncRouterMap = [
                 import("@/views/components-demo/Excel/excel-import"),
             meta: { title: "excel-import", role: ['admin'] }
         },
+        {
+            path: "moment",
+            name: "moment",
+            component: () =>
+                import("@/views/components-demo/moment/index"),
+            meta: { title: "moment", role: ['admin'] }
+        },
         ]
     },
     {
