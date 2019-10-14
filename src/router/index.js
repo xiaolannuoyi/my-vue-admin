@@ -95,6 +95,20 @@ export const asyncRouterMap = [
         ]
     },
     {
+        path: "/text",
+        component: Layout,
+        meta: { title: "文本", icon: "el-icon-info", role: ['admin'] },
+        children: [
+            {
+                path: "vue-code-diff",
+                name: "vue-code-diff",
+                component: () =>
+                    import("@/views/components-demo/vue-code-diff/index"),
+                meta: { title: "vue-code-diff", role: ['admin'] }
+            },
+        ]
+    },
+    {
         path: "/component",
         component: Layout,
         meta: { title: "组件", icon: "el-icon-info", role: ['admin'] },
@@ -147,6 +161,19 @@ export const asyncRouterMap = [
                 import("@/views/components-demo/moment/index"),
             meta: { title: "moment", role: ['admin'] }
         },
+        ]
+    },
+    {
+        path: "/shape",
+        component: Layout,
+        meta: { title: "图形", icon: "el-icon-info", role: ['admin'] },
+        children: [{
+            path: "pipline",
+            name: "pipline",
+            component: () =>
+                import("@/views/shape-center/pipline/index"),
+            meta: { title: "管道图", role: ['admin'] }
+        }
         ]
     },
     {

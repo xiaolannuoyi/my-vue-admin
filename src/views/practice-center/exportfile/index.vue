@@ -17,7 +17,7 @@
     <span>{{filename}}</span>
 
     <el-form ref="myform" :model="myform" label-width="80px">
-      <template slot-scope="props">
+      <template slot-scope="">
         <el-row :gutter="20" v-for="(item, index) in myform.envGroup" :key="index">
           <el-col :span="10">
             <el-form-item label="key" :prop="'envGroup.' + index + '.key'">
