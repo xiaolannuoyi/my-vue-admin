@@ -238,6 +238,13 @@ export const asyncRouterMap = [
             meta: { title: "表格内表单", role: ['editor'] }
         },
         {
+            path: "upload-img",
+            name: "upload-img",
+            component: () =>
+                import("@/views/practice-center/upload-img/index"),
+            meta: { title: "上传图片", role: ['editor'] }
+        },
+        {
             path: "test",
             name: "test",
             component: () =>
