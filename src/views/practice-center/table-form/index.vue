@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-form ref="form" :model="form" label-width="20px">
-      <el-table ref="table" :data="form.tableData" empty-text="暂无数据">
+      <el-table ref="table" :data="form.tableData" empty-text="暂无数据" header-cell-class-name='requiredclass'>
         <el-table-column label="姓名">
           <template slot-scope="scope">
             <el-form-item
@@ -54,9 +54,19 @@ export default {
       form: {
         tableData: [
           {
-            name: "张三",
+            name: "张一",
             age: 19,
+            tel: 13333333332
+          },
+          {
+            name: "张二",
+            age: 11,
             tel: 13333333333
+          },
+          {
+            name: "张三",
+            age: 11,
+            tel: 13333
           },
           {
             name: "",
@@ -76,6 +86,7 @@ export default {
     },
     del(index) {
       this.form.tableData.splice(index, 1);
+      // this.$refs.form.validate()
     },
     checkAge(rule, value, callback) {
       if (!value) {
@@ -98,7 +109,7 @@ export default {
       } else if (!regName.test(value)) {
         callback(new Error("请输入正确的姓名"));
       } else if (this.nameequalCheck(index, value)) {
-        callback(new Error("电话号码重复,请重新填写"));
+        callback(new Error("姓名重复,请重新填写"));
       } else {
         callback();
       }
