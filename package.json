@@ -31,6 +31,7 @@
     "vanilla-tilt": "^1.6.1",
     "vue": "^2.6.6",
     "vue-code-diff": "^0.0.4",
+    "vue-codemirror": "^4.0.6",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1",
     "xlsx": "^0.15.1"

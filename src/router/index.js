@@ -106,6 +106,13 @@ export const asyncRouterMap = [
                     import("@/views/components-demo/vue-code-diff/index"),
                 meta: { title: "vue-code-diff", role: ['admin'] }
             },
+            {
+                path: "vue-codemirror",
+                name: "vue-codemirror",
+                component: () =>
+                    import("@/views/components-demo/vue-codemirror/index"),
+                meta: { title: "vue-codemirror", role: ['admin'] }
+            },
         ]
     },
     {
@@ -243,6 +250,20 @@ export const asyncRouterMap = [
             component: () =>
                 import("@/views/practice-center/upload-img/index"),
             meta: { title: "上传图片", role: ['editor'] }
+        },
+        {
+            path: "upload-file",
+            name: "upload-file",
+            component: () =>
+                import("@/views/practice-center/upload-file/index"),
+            meta: { title: "上传文件", role: ['editor'] }
+        },
+        {
+            path: "form",
+            name: "form",
+            component: () =>
+                import("@/views/practice-center/form/index"),
+            meta: { title: "表单切换", role: ['editor'] }
         },
         {
             path: "test",
