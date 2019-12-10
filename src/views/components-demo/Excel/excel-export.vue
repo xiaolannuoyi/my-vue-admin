@@ -215,7 +215,7 @@ export default {
       let theader = this.getheader(this.arr);
       // console.log("theader", theader);
       let data = this.formatJson(theader, this.arr);
-      // console.log("data", data);
+      console.log("data", data);
       import("./Export2Excel").then(excel => {
         excel.export_json_to_excel({
           header: theader, //表头 必填

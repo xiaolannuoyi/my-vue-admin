@@ -273,6 +273,36 @@ export const asyncRouterMap = [
             meta: { title: "test", role: ['editor'] }
         },
         ]
+    },
+    {
+        path: "/echarts",
+        component: Layout,
+        redirect: "/echarts/liquidFill",
+        meta: { title: "echarts", icon: "el-icon-info", role: ['editor'] },
+        children:[
+            {
+                path: "liquidFill",
+                name: "liquidFill",
+                component: () =>
+                    import("@/views/echarts/liquidFill"),
+                meta: { title: "水位图", role: ['editor'] }
+            }
+        ]
+    },
+    {
+        path: "/iframe",
+        component: Layout,
+        redirect: "/iframe/index",
+        meta: { title: "iframe", icon: "el-icon-info", role: ['editor'] },
+        children:[
+            {
+                path: "index",
+                name: "index",
+                component: () =>
+                    import("@/views/iframe/index"),
+                meta: { title: "iframe", role: ['editor'] }
+            }
+        ]
     }
 ];
 
