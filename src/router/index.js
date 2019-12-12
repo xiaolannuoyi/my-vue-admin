@@ -180,6 +180,20 @@ export const asyncRouterMap = [
             component: () =>
                 import("@/views/shape-center/pipline/index"),
             meta: { title: "管道图", role: ['admin'] }
+        },
+        {
+            path: "pipeline-react-to-vue",
+            name: "pipeline-react-to-vue",
+            component: () =>
+                import("@/views/shape-center/pipeline-react-to-vue/index"),
+            meta: { title: "可编辑的管道图", role: ['admin'] }
+        },
+        {
+            path: "vue-pipeline",
+            name: "vue-pipeline",
+            component: () =>
+                import("@/views/shape-center/vue-pipeline/index"),
+            meta: { title: "vue-pipeline", role: ['admin'] }
         }
         ]
     },
