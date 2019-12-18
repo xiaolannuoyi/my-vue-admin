@@ -329,6 +329,14 @@ export const asyncRouterMap = [
                 import("@/views/practice-center/element/datepicker"),
             meta: { title: "日期组件", role: ['editor'] }
         },
+        {
+            path: "scrollbar",
+            name: "scrollbar",
+            component: () =>
+                import("@/views/practice-center/element/scrollbar"),
+            meta: { title: "滚动条", role: ['editor'] }
+        },
+        
         ]
     },
 ];
