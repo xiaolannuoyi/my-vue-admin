@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div>
     <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
     <!-- <HelloWorld msg="Welcome to Your Vue.js App" /> -->
     <h2>Vue Pipeline</h2>
@@ -155,18 +155,6 @@ export default {
 </script>
 
 <style>
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  margin: 30px 30px;
-  /* text-align: center; */
-  color: #2c3e50;
-  /* margin-top: 60px; */
-  /* height: 100vh; */
-  /* display: flex; */
-  /* flex-direction: column; */
-}
 .setting {
   margin: 30px;
   width: 800px;
