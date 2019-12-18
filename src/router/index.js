@@ -317,7 +317,20 @@ export const asyncRouterMap = [
                 meta: { title: "iframe", role: ['editor'] }
             }
         ]
-    }
+    },
+    {
+        path: "/element",
+        component: Layout,
+        meta: { title: "element组件", icon: "el-icon-info", role: ['editor'] },
+        children: [{
+            path: "datepicker",
+            name: "datepicker",
+            component: () =>
+                import("@/views/practice-center/element/datepicker"),
+            meta: { title: "日期组件", role: ['editor'] }
+        },
+        ]
+    },
 ];
 
 //实例化vue的时候只挂载commontRouterMap
