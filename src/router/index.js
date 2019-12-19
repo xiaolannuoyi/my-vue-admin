@@ -339,6 +339,20 @@ export const asyncRouterMap = [
         
         ]
     },
+    {
+        path: "/mylayout",
+        component: Layout,
+        meta: { title: "我的布局", icon: "el-icon-info", role: ['editor'] },
+        children: [{
+            path: "header",
+            name: "header",
+            component: () =>
+                import("@/views/practice-center/myLayout/header"),
+            meta: { title: "日期组件", role: ['editor'] }
+        },
+        
+        ]
+    },
 ];
 
 //实例化vue的时候只挂载commontRouterMap

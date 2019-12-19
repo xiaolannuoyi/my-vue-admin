@@ -12,7 +12,6 @@
       tag="ul"
     >
         <li v-for="item in num" :key="item">{{item}}</li>
-      
     </el-scrollbar>
   </div>
 </template>
