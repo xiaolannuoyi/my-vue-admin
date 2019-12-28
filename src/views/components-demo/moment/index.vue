@@ -7,7 +7,7 @@
 <script>
 const moment = require("moment");
 const humanizeDuration = require("humanize-duration");
-
+// moment(1411641720000).format('YYYY-MM-DD HH:mm:ss')
 export default {
   data() {
     return {

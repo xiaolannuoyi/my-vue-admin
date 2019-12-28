@@ -107,11 +107,25 @@ export const asyncRouterMap = [
                 meta: { title: "vue-code-diff", role: ['admin'] }
             },
             {
+                path: "codemirror",
+                name: "codemirror",
+                component: () =>
+                    import("@/views/components-demo/vue-codemirror/index"),
+                meta: { title: "json", role: ['admin'] }
+            },
+            {
                 path: "vue-codemirror",
                 name: "vue-codemirror",
                 component: () =>
-                    import("@/views/components-demo/vue-codemirror/index"),
+                    import("@/views/components-demo/vue-codemirror/vue-codemirror"),
                 meta: { title: "vue-codemirror", role: ['admin'] }
+            },
+            {
+                path: "Marked",
+                name: "Marked",
+                component: () =>
+                    import("@/views/components-demo/Marked/index"),
+                meta: { title: "Marked", role: ['admin'] }
             },
         ]
     },
@@ -278,6 +292,13 @@ export const asyncRouterMap = [
             component: () =>
                 import("@/views/practice-center/form/index"),
             meta: { title: "表单切换", role: ['editor'] }
+        },
+        {
+            path: "input-path",
+            name: "input-path",
+            component: () =>
+                import("@/views/practice-center/input-path/index"),
+            meta: { title: "input-path", role: ['editor'] }
         },
         {
             path: "test",
