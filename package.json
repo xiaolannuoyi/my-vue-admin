@@ -22,7 +22,7 @@
     "hanzi-writer": "^2.0.2",
     "humanize-duration": "^3.20.1",
     "js-cookie": "^2.2.0",
-    "jsoneditor": "^5.33.0",
+    "jsoneditor": "^9.5.6",
     "jsonlint": "^1.6.3",
     "marked": "^0.8.0",
     "mockjs": "^1.0.1-beta3",
